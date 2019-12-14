@@ -16,6 +16,7 @@ COPY package.json /code/package.json
 RUN npm install
 
 COPY . /code
+RUN sed -i 's/const MTURK.*/const MTURK=true/' src/config/main.js 
 RUN npm install
 RUN npm audit fix
 

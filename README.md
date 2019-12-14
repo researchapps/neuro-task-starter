@@ -128,7 +128,12 @@ build the container:
 $ docker build -t neuro-task-starter .
 ```
 
-**under development** likely this will be done with an automated task if it actually works.
+Note that we set the boolean `MTURK` to true with an imperfect sed replacement - keep
+this in mind if you modify the file [src/config/main.js](src/config/main.js).
+
+```
+RUN sed -i 's/const MTURK.*/const MTURK=true/' src/config/main.js
+```
 
 Next, create a folder for output
 
@@ -136,11 +141,20 @@ Next, create a folder for output
 mkdir -p data/
 ```
 
-And run the container with the folder bound to it. The static files will be in your bound
-folder to /data in the container after running it:
+And run the container with the folder bound to it. 
 
 ```bash
 $ docker run -v $PWD/data:/data neuro-task-starter
+```
+
+The static files will be in your bound
+folder to /data in the container after running it:
+
+```bash
+$ tree data/ -L 1
+data/
+├── index.html
+└── static
 ```
 
 **still being written**
