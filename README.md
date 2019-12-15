@@ -121,43 +121,15 @@ The following are environment variables used by the app:
 
 ## Usage with Expfactory
 
-A container (the [Dockerfile](Dockerfile)) is provided to help you with conversion. First,
-build the container:
+To generate a reproducible experiment factory container, see the automated
+build provided at [expfactory-experiments](https://github.com/expfactory-experiments/neuro-task-starter).
+The build is run to update the static files in the repository there, and you can build into an experiment
+factory container as follows:
 
 ```bash
-$ docker build -t neuro-task-starter .
-```
-
-Note that we set the boolean `MTURK` to true with an imperfect sed replacement - keep
-this in mind if you modify the file [src/config/main.js](src/config/main.js).
 
 ```
-RUN sed -i 's/const MTURK.*/const MTURK=true/' src/config/main.js
-```
 
-Next, create a folder for output
-
-```bash
-mkdir -p data/
-```
-
-And run the container with the folder bound to it. 
-
-```bash
-$ docker run -v $PWD/data:/data neuro-task-starter
-```
-
-The static files will be in your bound
-folder to /data in the container after running it:
-
-```bash
-$ tree data/ -L 1
-data/
-├── index.html
-└── static
-```
-
-**still being written**
 
 ## Usage with PsiTurk
 
