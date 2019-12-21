@@ -1,7 +1,7 @@
 import React from 'react'
 import { Experiment, jsPsych } from 'jspsych-react'
 import { tl } from './timelines/main'
-import { MTURK, IS_ELECTRON, EXPFACTORY } from './config/main'
+import { IS_ELECTRON, EXPFACTORY } from './config/main'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import '@fortawesome/fontawesome-free/css/all.css'
@@ -30,7 +30,6 @@ if (IS_ELECTRON) {
 class App extends React.Component {
   render() {
     console.log("Outside Turk:", jsPsych.turk.turkInfo().outsideTurk)
-    console.log("Turk:", MTURK)
     console.log("Expfactory:", EXPFACTORY)
 
     return (
