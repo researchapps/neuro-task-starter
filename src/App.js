@@ -59,6 +59,7 @@ class App extends React.Component {
                     method: "POST", 
                     body: JSON.stringify(data)
                 }).then(res => {
+                   //TODO: local save if POST doesn't work
                    console.log("Request complete! response:", res);
                    psiturk.teardownTask();
                    window.location = psiturk.taskdata.adServerLoc + "/next";
