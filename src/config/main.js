@@ -26,6 +26,7 @@ try {
 } catch {
 	IS_ELECTRON = false
 }
+const EXPFACTORY = false
 
 // get language file
 const lang = require('../language/en_us.json')
@@ -47,6 +48,7 @@ export {
 	defaultBlockSettings,
 	lang,
 	eventCodes,
+        EXPFACTORY,
 	MTURK,
 	AT_HOME,
 	IS_ELECTRON

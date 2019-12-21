@@ -119,6 +119,18 @@ The following are environment variables used by the app:
 * `REACT_APP_AT_HOME` [boolean]: whether the app is being used in home mode (true) or clinic mode (false)
 * `REACT_APP_PATIENT_ID` [string]: The default patient id to show when requesting a patient ID in `userID`.  If not set, no default is shown (blank input box).
 
+## Usage with Expfactory
+
+To generate a reproducible experiment factory container, see the automated
+build provided at [expfactory-experiments](https://github.com/expfactory-experiments/neuro-task-starter).
+The build is run to update the static files in the repository there, and you can build into an experiment
+factory container as follows:
+
+```bash
+
+```
+
+
 ## Usage with PsiTurk
 
 While this set up is optimized for Electron, we added functionality that will make use with PsiTurk easy. The application will detect if it's being used in a Turk environment and will:  
@@ -136,7 +148,7 @@ PsiTurk is a Python package used to manage HITs in Mechanical Turk. Before using
 
 You'll need to follow these steps (the path to the PsiTurk project should be a directory you wish to be created):
 - Build the application: `npm run build`  
-- Move to the `psiturkit` directory: `cd psiturkit`
+- Move to the `convert` directory: `cd convert`
 - If it's the first time you're running the script:  
   `./psiturk-it -p <PATH_TO_NEW_PSITURK_PROJECT>`  
 

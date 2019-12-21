@@ -1,0 +1,32 @@
+#!/bin/bash
+set -e
+
+usage () { echo "Usage: ${0} path/output-dir";}
+
+
+if [ $# -eq 0 ]; then
+  echo "Please set the output directory as the only argument. It should be empty.";
+  usage;
+fi
+
+EXPORT_DIR="${1}"
+HERE="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+ROOT=$(dirname $HERE)
+cd $ROOT
+
+if [ ! -d ${EXPORT_DIR} ]; then
+   echo "Creating ${EXPORT_DIR}"
+   mkdir -p ${EXPORT_DIR}
+fi
+
+# Export directory must be empty
+[ "$(ls -A ${EXPORT_DIR})" ] && \
+    echo "Please empty ${EXPORT_DIR} before use." && exit 1 \
+    || echo "Setting up ${EXPORT_DIR}"
+npm run build
+mkdir -p ${EXPORT_DIR}/static/lib
+cp -R ${ROOT}/build/static/* $EXPORT_DIR/static/
+cp ${ROOT}/build/*.js* ${EXPORT_DIR}/static/
+cp ${ROOT}/build/lib/*.js ${EXPORT_DIR}/static/lib/
+cp ${ROOT}/build/index.html $EXPORT_DIR/index.html
+echo "Exported files are in $EXPORT_DIR"

@@ -91,7 +91,7 @@ jobs:
     - name: Create Psiturk Build
       if: startsWith(matrix.os, 'ubuntu')
       run: |
-        cd psiturkit
+        cd convert
         ./psiturk-it -p ${{ steps.package_info.outputs.package_name }}-psiturk
     - name: Upload PsiTurk Build
       uses: actions/upload-artifact@master
